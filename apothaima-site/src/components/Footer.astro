@@ -1,0 +1,30 @@
+---
+import Logo from './Logo.astro';
+import site from '../data/site.json';
+import { url } from '../lib/url';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <Logo />
+      <p>{site.tagline} Οι επόμενες δράσεις μας ανακοινώνονται πρώτα στο Instagram.</p>
+    </div>
+    <div>
+      <h2>ΕΠΙΚΟΙΝΩΝΙΑ</h2>
+      <ul>
+        <li><a href={`tel:+30${site.phone}`}>{site.phoneDisplay}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={url('/epikoinonia/')}>Σελίδα επικοινωνίας</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>ΑΚΟΛΟΥΘΗΣΕ ΜΑΣ</h2>
+      <ul>
+        <li><a href={site.instagram} rel="noopener">Instagram</a></li>
+        <li><a href={site.facebook} rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">© {year} {site.legalName}</div>
+</footer>

@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import NextEvent from '../components/NextEvent.astro';
+import DrasiCard from '../components/DrasiCard.astro';
+import { splitDraseis } from '../lib/draseis';
+import { url } from '../lib/url';
+import site from '../data/site.json';
+import stats from '../data/stats.json';
+import partners from '../data/partners.json';
+import heroImg from '../assets/placeholders/crowd-1.jpg';
+import storyImg from '../assets/placeholders/hall-1.jpg';
+
+const { all, next, past } = await splitDraseis();
+const years = new Date().getFullYear() - site.foundedYear;
+const aimodosies = all.filter((d) => d.data.tag === 'aimodosia').length;
+const boxes = [
+  { num: years, label: 'χρόνια δράσης' },
+  { num: aimodosies, label: 'εθελοντικές αιμοδοσίες' },
+  stats.bloodBags ? { num: stats.bloodBags, label: 'ασκοί αίματος' } : null,
+  { num: all.length, label: 'δράσεις αλληλεγγύης' },
+].filter(Boolean) as { num: number | string; label: string }[];
+---
+<Base>
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="stack" style="gap:24px">
+        <span class="eyebrow">Εθελοντική αιμοδοσία · Αλληλεγγύη · Κοινότητα</span>
+        <h1>Κάνε καλό,<br />νιώσε καλύτερα!</h1>
+        <p class="lead">Από το 2021 οργανώνουμε εθελοντικές αιμοδοσίες και δράσεις αλληλεγγύης. Από μια πράξη, γεννήθηκε μια κοινότητα.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href={url('/draseis/')}>Δες τις δράσεις μας</a>
+          <a class="btn btn--ghost" href={url('/istoria/')}>Η ιστορία μας</a>
+        </div>
+      </div>
+      <div class="hero__img">
+        <Image src={heroImg} alt="Εθελοντές και αιμοδότες σε δράση του ΑΠΟΘΑΙΜΑ" width={900} loading="eager" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="padding-top:72px">
+    <NextEvent next={next} />
+  </section>
+
+  <section class="container" style="padding-top:48px">
+    <h2 class="sr-only">Τα νούμερά μας</h2>
+    <div class="stats">
+      {boxes.map((b) => (
+        <div class="stat"><span class="stat__num">{b.num}</span><span class="stat__label">{b.label}</span></div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="split__img"><Image src={storyImg} alt="Η πρώτη αιμοδοσία του ΑΠΟΘΑΙΜΑ στο Μέγαρο Μουσικής" width={800} /></div>
+      <div class="stack" style="gap:20px">
+        <span class="eyebrow">Η ιστορία μας</span>
+        <h2 class="h2">Από μια ιδέα προσφοράς σε μια κοινότητα κοινωνικής δράσης</h2>
+        <p style="font-size:18px;color:var(--ink-2)">Το ΑΠΟΘΑΙΜΑ γεννήθηκε το 2021, μέσα στην πανδημία, από την ανάγκη για αίμα των ανθρώπων με Μεσογειακή Αναιμία. Η πρώτη διήμερη αιμοδοσία στο Μέγαρο Μουσικής ήταν η αρχή. Σήμερα, ως ΑΠΟΘΑΙΜΑ COMMUNITY ΑΜΚΕ, δημιουργούμε περισσότερους τρόπους να συμμετέχει ο καθένας.</p>
+        <a class="link-arrow" href={url('/istoria/')}>Διάβασε όλη την ιστορία →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--beige">
+    <div class="container">
+      <div class="section-head">
+        <div class="stack" style="gap:10px">
+          <span class="eyebrow">Πρόσφατες δράσεις</span>
+          <h2 class="h2">Τι κάναμε πρόσφατα</h2>
+        </div>
+        <a class="link-arrow" href={url('/draseis/')}>Όλες οι δράσεις →</a>
+      </div>
+      <div class="cards">
+        {past.slice(0, 3).map((d) => <DrasiCard drasi={d} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="text-align:center">
+      <span class="eyebrow" style="color:var(--ink-3)">Συνεργαστήκαμε με</span>
+      <div class="partners">
+        {partners.map((p) => <div class="partner">{p.name}</div>)}
+      </div>
+    </div>
+  </section>
+</Base>

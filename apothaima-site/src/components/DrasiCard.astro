@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import { type Drasi, formatDate, cardTitle, altFor, TAG_LABEL } from '../lib/draseis';
+import { url } from '../lib/url';
+import fallback from '../assets/placeholders/crowd-1.jpg';
+interface Props { drasi: Drasi; }
+const { drasi } = Astro.props;
+const cover = drasi.data.cover ?? drasi.data.gallery[0] ?? fallback;
+---
+<a class="card" href={url(`/draseis/${drasi.id}/`)}>
+  <div class="card__img">
+    <Image src={cover} alt={altFor(drasi)} width={600} loading="lazy" />
+  </div>
+  <div class="card__body">
+    <div class="card__meta">
+      <span class="card__date">{formatDate(drasi)}</span>
+      <span class="tag">{TAG_LABEL[drasi.data.tag]}</span>
+    </div>
+    <h3 class="card__title">{cardTitle(drasi)}</h3>
+    <span class="card__place">{drasi.data.location}</span>
+  </div>
+</a>

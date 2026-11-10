@@ -1,0 +1,36 @@
+---
+import Logo from './Logo.astro';
+import site from '../data/site.json';
+import { url } from '../lib/url';
+const path = Astro.url.pathname;
+const links = [
+  { href: '/', label: 'Αρχική' },
+  { href: '/istoria/', label: 'Η ιστορία μας' },
+  { href: '/draseis/', label: 'Δράσεις' },
+  { href: '/epikoinonia/', label: 'Επικοινωνία' },
+];
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+<header class="header">
+  <div class="container header__inner">
+    <Logo />
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Άνοιγμα μενού">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+    <nav id="main-nav" class="nav" aria-label="Κύριο μενού">
+      {links.map((l) => (
+        <a href={url(l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
+      ))}
+      <a class="btn btn--primary" href={site.instagram} rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</header>
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const nav = document.getElementById('main-nav');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('is-open') ?? false;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Κλείσιμο μενού' : 'Άνοιγμα μενού');
+  });
+</script>

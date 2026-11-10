@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import istoria from '../data/istoria.json';
+import img1 from '../assets/placeholders/hall-2.jpg';
+import img2 from '../assets/placeholders/crowd-2.jpg';
+import img3 from '../assets/placeholders/drop-1.jpg';
+const images = [img1, img2, img3];
+const milestones = [
+  { year: '2021', text: 'Η πρώτη διήμερη εθελοντική αιμοδοσία στο Μέγαρο Μουσικής Αθηνών.' },
+  { year: '2022', text: 'Πρώτες συνεργασίες με τον ΠΑ.Σ.ΠΑ.Μ.Α. και το Εθνικό Κέντρο Αιμοδοσίας.' },
+  { year: '2025', text: 'Πρώτη φορά ενημέρωση και εγγραφή εθελοντών δοτών μυελού των οστών.' },
+  { year: '2026', text: '5 χρόνια ΑΠΟΘΑΙΜΑ και νέες δράσεις ως ΑΠΟΘΑΙΜΑ COMMUNITY ΑΜΚΕ.' },
+];
+---
+<Base title="Η ιστορία μας" description="Πώς μια ιδέα προσφοράς το 2021 έγινε το ΑΠΟΘΑΙΜΑ COMMUNITY: εθελοντικές αιμοδοσίες, αλληλεγγύη και κοινότητα.">
+  <section class="page-head">
+    <div class="container">
+      <span class="eyebrow">Η ιστορία μας</span>
+      <h1>{istoria.subtitle}</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      {istoria.sections.map((s, i) => (
+        <>
+          <div class="prose">
+            {s.heading && <h2>{s.heading}</h2>}
+            {s.paras.map((p) => <p>{p}</p>)}
+          </div>
+          {i < images.length && (
+            <div class="story-img"><Image src={images[i]} alt="Στιγμιότυπο από δράση του ΑΠΟΘΑΙΜΑ" width={1200} loading="lazy" /></div>
+          )}
+        </>
+      ))}
+    </div>
+  </section>
+  <section class="section section--beige">
+    <div class="container">
+      <span class="eyebrow">Ορόσημα</span>
+      <h2 class="h2" style="margin-top:10px">Η διαδρομή μας</h2>
+      <ol class="timeline">
+        {milestones.map((m) => <li><strong>{m.year}</strong>{m.text}</li>)}
+      </ol>
+    </div>
+  </section>
+</Base>

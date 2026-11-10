@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base title="Επικοινωνία" description="Επικοινώνησε με το ΑΠΟΘΑΙΜΑ COMMUNITY: τηλέφωνο, email, Instagram και Facebook.">
+  <section class="page-head">
+    <div class="container">
+      <span class="eyebrow">Επικοινωνία</span>
+      <h1>Μίλα μαζί μας</h1>
+      <p class="lead">Θέλεις να συμμετάσχεις σε μια δράση, να γίνεις εθελοντής ή να συνεργαστούμε; Στείλε μας.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-card"><span class="eyebrow">Τηλέφωνο</span><a href={`tel:+30${site.phone}`}>{site.phoneDisplay}</a></div>
+      <div class="contact-card"><span class="eyebrow">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
+      <div class="contact-card"><span class="eyebrow">Instagram</span><a href={site.instagram} rel="noopener">@apothaima</a></div>
+      <div class="contact-card"><span class="eyebrow">Facebook</span><a href={site.facebook} rel="noopener">facebook.com/apothaima</a></div>
+    </div>
+  </section>
+</Base>

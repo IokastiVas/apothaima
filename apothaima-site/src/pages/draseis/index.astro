@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import NextEvent from '../../components/NextEvent.astro';
+import DrasiCard from '../../components/DrasiCard.astro';
+import { splitDraseis, groupByYear } from '../../lib/draseis';
+const { next, upcoming, past } = await splitDraseis();
+const years = groupByYear(past);
+---
+<Base title="Δράσεις" description="Όλες οι εθελοντικές αιμοδοσίες και δράσεις αλληλεγγύης του ΑΠΟΘΑΙΜΑ από το 2021 μέχρι σήμερα.">
+  <section class="page-head">
+    <div class="container">
+      <span class="eyebrow">Οι δράσεις μας</span>
+      <h1>Από το 2021 μέχρι σήμερα</h1>
+      <p class="lead">Αιμοδοσίες, ενημέρωση για τη δωρεά μυελού των οστών και δράσεις αλληλεγγύης, μαζί με συνεργάτες και εθελοντές.</p>
+    </div>
+  </section>
+  <section class="container" style="padding-top:56px">
+    <NextEvent next={next} />
+    {upcoming.length > 1 && (
+      <div class="cards" style="margin-top:24px">{upcoming.slice(1).map((d) => <DrasiCard drasi={d} />)}</div>
+    )}
+  </section>
+  <section class="container" style="padding-bottom:88px">
+    {years.map(([year, list]) => (
+      <div class="year">
+        <div class="year__head"><h2>{year}</h2></div>
+        <div class="cards">{list.map((d) => <DrasiCard drasi={d} />)}</div>
+      </div>
+    ))}
+  </section>
+</Base>

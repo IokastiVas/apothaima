@@ -1,0 +1,31 @@
+---
+import { type Drasi, dayMonth, cardTitle, formatDate } from '../lib/draseis';
+import { url } from '../lib/url';
+import site from '../data/site.json';
+interface Props { next: Drasi | null; }
+const { next } = Astro.props;
+const dm = next ? dayMonth(next) : null;
+---
+{next && dm ? (
+  <div class="next">
+    <div class="next__date" aria-hidden="true">
+      <span class="next__day">{dm.day}</span>
+      <span class="next__month">{dm.month}</span>
+    </div>
+    <div class="stack" style="gap:10px">
+      <span class="eyebrow eyebrow--light">Επόμενη δράση</span>
+      <h2>{cardTitle(next)}</h2>
+      <p>{formatDate(next)} · {next.data.location}</p>
+    </div>
+    <a class="btn btn--light" href={url(`/draseis/${next.id}/`)}>Περισσότερα</a>
+  </div>
+) : (
+  <div class="next next--empty">
+    <div class="stack" style="gap:10px">
+      <span class="eyebrow eyebrow--light">Επόμενη δράση</span>
+      <h2>Ετοιμάζουμε την επόμενη δράση μας.</h2>
+      <p>Ακολούθησέ μας για να μάθεις πρώτος πότε και πού.</p>
+    </div>
+    <a class="btn btn--light" href={site.instagram} rel="noopener">Ακολούθησέ μας στο Instagram</a>
+  </div>
+)}

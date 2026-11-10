@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+---
+<Base title="Η σελίδα δεν βρέθηκε">
+  <section class="section">
+    <div class="container stack" style="align-items:flex-start;gap:20px;min-height:40vh;justify-content:center">
+      <span class="eyebrow">Σφάλμα 404</span>
+      <h1 class="h2">Αυτή η σελίδα δεν υπάρχει.</h1>
+      <a class="btn btn--primary" href={url('/')}>Επιστροφή στην αρχική</a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,97 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getDraseis, formatDate, altFor, TAG_LABEL, type Drasi } from '../../lib/draseis';
+import { url } from '../../lib/url';
+import site from '../../data/site.json';
+
+export async function getStaticPaths() {
+  const all = await getDraseis();
+  return all.map((drasi, i) => ({
+    params: { slug: drasi.id },
+    props: { drasi, newer: all[i - 1] ?? null, older: all[i + 1] ?? null },
+  }));
+}
+interface Props { drasi: Drasi; newer: Drasi | null; older: Drasi | null; }
+const { drasi, newer, older } = Astro.props;
+const { Content } = await render(drasi);
+const d = drasi.data;
+const photos = d.gallery.length ? d.gallery : d.cover ? [d.cover] : [];
+const big = await Promise.all(photos.map((p) => getImage({ src: p, width: 1600 })));
+const og = d.cover ? await getImage({ src: d.cover, width: 1200, format: 'jpeg' }) : null;
+const desc = (drasi.body ?? '').replace(/\s+/g, ' ').trim().slice(0, 155);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: d.title,
+  startDate: d.startDate.toISOString().slice(0, 10),
+  endDate: (d.endDate ?? d.startDate).toISOString().slice(0, 10),
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: { '@type': 'Place', name: d.location, address: { '@type': 'PostalAddress', addressCountry: 'GR' } },
+  organizer: { '@type': 'NGO', name: site.legalName, url: 'https://apothaima.gr' },
+  description: desc,
+};
+---
+<Base title={d.title} description={desc} image={og?.src} jsonLd={jsonLd}>
+  <section class="page-head">
+    <div class="container">
+      <a class="link-arrow" href={url('/draseis/')}>← Όλες οι δράσεις</a>
+      <h1>{d.title}</h1>
+      <span class="tag">{TAG_LABEL[d.tag]}</span>
+      <dl class="drasi-meta">
+        <div><dt>Ημερομηνία</dt><dd>{formatDate(drasi)}</dd></div>
+        <div><dt>Χώρος</dt><dd>{d.location}</dd></div>
+        {d.partners && <div><dt>Συνεργάτες</dt><dd>{d.partners}</dd></div>}
+      </dl>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="prose"><Content /></div>
+      {photos.length > 0 && (
+        <>
+          <h2 class="h2" style="margin-top:56px;font-size:28px">Φωτογραφίες</h2>
+          <div class="gallery">
+            {photos.map((p, i) => (
+              <button type="button" data-index={i} data-full={big[i].src} aria-label={`Μεγέθυνση φωτογραφίας ${i + 1}`}>
+                <Image src={p} alt={altFor(drasi)} width={520} loading="lazy" />
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+      <nav class="pager" aria-label="Άλλες δράσεις">
+        {older ? <a href={url(`/draseis/${older.id}/`)}>← {older.data.shortTitle ?? older.data.title}</a> : <span></span>}
+        {newer ? <a href={url(`/draseis/${newer.id}/`)} style="text-align:right">{newer.data.shortTitle ?? newer.data.title} →</a> : <span></span>}
+      </nav>
+    </div>
+  </section>
+  <dialog class="lightbox" aria-label="Προβολή φωτογραφίας">
+    <div class="lightbox__inner"><img alt={altFor(drasi)} /></div>
+    <button class="lightbox__btn lightbox__close" type="button" aria-label="Κλείσιμο">×</button>
+    <button class="lightbox__btn lightbox__prev" type="button" aria-label="Προηγούμενη">‹</button>
+    <button class="lightbox__btn lightbox__next" type="button" aria-label="Επόμενη">›</button>
+  </dialog>
+</Base>
+<script>
+  const dlg = document.querySelector<HTMLDialogElement>('.lightbox');
+  const img = dlg?.querySelector('img');
+  const items = [...document.querySelectorAll<HTMLButtonElement>('.gallery button')];
+  let cur = 0;
+  const show = (i: number) => {
+    cur = (i + items.length) % items.length;
+    if (img) img.src = items[cur].dataset.full ?? '';
+  };
+  items.forEach((b, i) => b.addEventListener('click', () => { show(i); dlg?.showModal(); }));
+  dlg?.querySelector('.lightbox__close')?.addEventListener('click', () => dlg.close());
+  dlg?.querySelector('.lightbox__prev')?.addEventListener('click', () => show(cur - 1));
+  dlg?.querySelector('.lightbox__next')?.addEventListener('click', () => show(cur + 1));
+  dlg?.addEventListener('click', (e) => { if (e.target === dlg || (e.target as HTMLElement).classList.contains('lightbox__inner')) dlg.close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!dlg?.open) return;
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
+</script>
