@@ -6,11 +6,12 @@ type: "Συμμετοχή σε φεστιβάλ / ενημέρωση κοινο�
 tag: allileggyi
 location: "Κλειστό Γήπεδο Παλαιού Φαλήρου - Tae Kwon Do"
 partners: "Περιφέρεια Αττικής"
-cover: ../../assets/placeholders/crowd-1.jpg
+cover: ../../assets/images/festival2026-1.jpeg
 gallery:
-  - ../../assets/placeholders/crowd-1.jpg
-  - ../../assets/placeholders/crowd-2.jpg
-  - ../../assets/placeholders/crowd-3.jpg
+  - ../../assets/images/festival2026-2.jpeg
+  - ../../assets/images/festival2026-3.jpeg
+  - ../../assets/images/festival2026-4.jpeg
+  - ../../assets/images/festival2026-5.jpeg
 ---
 
 Το ΑΠΟΘΑΙΜΑ Community συμμετείχε στο 1ο Φεστιβάλ Εθελοντισμού της Περιφέρειας Αττικής, συναντώντας οργανώσεις της Κοινωνίας των Πολιτών και ανθρώπους που αναζητούν τρόπους να προσφέρουν. Η παρουσία αποτέλεσε ευκαιρία ανταλλαγής ιδεών και ανάπτυξης επαφών για μελλοντικές συνεργασίες.
