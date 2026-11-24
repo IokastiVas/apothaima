@@ -2,10 +2,14 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import istoria from '../data/istoria.json';
-import img1 from '../assets/placeholders/hall-2.jpg';
-import img2 from '../assets/placeholders/crowd-2.jpg';
-import img3 from '../assets/placeholders/drop-1.jpg';
-const images = [img1, img2, img3];
+import imgMegaro from '../assets/images/istoria-aimodosia-megaro.jpg';
+import imgDotes from '../assets/images/istoria-aimodotes.jpg';
+import imgBanner from '../assets/images/istoria-banner-apothaima.jpg';
+const images = [
+  { src: imgMegaro, position: '50% 62%', alt: 'Εθελοντική αιμοδοσία του ΑΠΟΘΑΙΜΑ στο φουαγιέ του Μεγάρου Μουσικής Αθηνών: εθελοντές δότες, γιατροί και νοσηλευτές ανάμεσα σε κόκκινα μπαλόνια' },
+  { src: imgDotes, position: '50% 58%', alt: 'Εθελοντές δότες ξαπλωμένοι σε καρέκλες αιμοδοσίας δίνουν αίμα, ενώ νοσηλεύτριες με λευκές ποδιές τους φροντίζουν' },
+  { src: imgBanner, position: '68% 50%', alt: 'Roll-up banner του ΑΠΟΘΑΙΜΑ COMMUNITY με το λογότυπο της σταγόνας-καρδιάς και το σύνθημα «κάνε καλό, νιώσε καλύτερα!»', variant: 'banner' },
+];
 const milestones = [
   { year: '2021', text: 'Η πρώτη διήμερη εθελοντική αιμοδοσία στο Μέγαρο Μουσικής Αθηνών.' },
   { year: '2022', text: 'Πρώτες συνεργασίες με τον ΠΑ.Σ.ΠΑ.Μ.Α. και το Εθνικό Κέντρο Αιμοδοσίας.' },
@@ -25,8 +29,17 @@ const milestones = [
       {istoria.sections.map((s, i) => (
         <>
           <div class="prose">
-            {s.heading && <h2>{s.heading}</h2>}
-            {s.paras.map((p) => <p>{p}</p>)}
+<figure class:list={['story-img', images[i].variant && `story-img--${images[i].variant}`]}>
+  <Image
+    src={images[i].src}
+    alt={images[i].alt}
+    widths={[640, 960, 1280, 1920]}
+    sizes="(max-width: 1240px) calc(100vw - 48px), 1200px"
+    style={`object-position: ${images[i].position}`}
+    loading="lazy"
+    decoding="async"
+  />
+</figure>            {s.paras.map((p) => <p>{p}</p>)}
           </div>
           {i < images.length && (
             <div class="story-img"><Image src={images[i]} alt="Στιγμιότυπο από δράση του ΑΠΟΘΑΙΜΑ" width={1200} loading="lazy" /></div>
