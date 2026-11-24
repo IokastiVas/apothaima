@@ -26,26 +26,28 @@ const milestones = [
   </section>
   <section class="section">
     <div class="container">
-      {istoria.sections.map((s, i) => (
+              {istoria.sections.map((s, i) => (
         <>
           <div class="prose">
-<figure class:list={['story-img', images[i].variant && `story-img--${images[i].variant}`]}>
-  <Image
-    src={images[i].src}
-    alt={images[i].alt}
-    widths={[640, 960, 1280, 1920]}
-    sizes="(max-width: 1240px) calc(100vw - 48px), 1200px"
-    style={`object-position: ${images[i].position}`}
-    loading="lazy"
-    decoding="async"
-  />
-</figure>            {s.paras.map((p) => <p>{p}</p>)}
+            {s.heading && <h2>{s.heading}</h2>}
+            {s.paras.map((p) => <p>{p}</p>)}
           </div>
           {i < images.length && (
-            <div class="story-img"><Image src={images[i]} alt="Στιγμιότυπο από δράση του ΑΠΟΘΑΙΜΑ" width={1200} loading="lazy" /></div>
+            <figure class:list={['story-img', images[i].variant && `story-img--${images[i].variant}`]}>
+              <Image
+                src={images[i].src}
+                alt={images[i].alt}
+                widths={[640, 960, 1280, 1920]}
+                sizes="(max-width: 1240px) calc(100vw - 48px), 1200px"
+                style={`object-position: ${images[i].position}`}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
           )}
         </>
       ))}
+
     </div>
   </section>
   <section class="section section--beige">
