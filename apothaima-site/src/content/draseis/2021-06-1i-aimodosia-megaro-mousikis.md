@@ -7,11 +7,11 @@ type: "Διοργάνωση αιμοδοσίας"
 tag: aimodosia
 location: "Μέγαρο Μουσικής Αθηνών – Αίθουσα Λαμπράκη"
 partners: "Νοσοκομείο Παίδων «Η Αγία Σοφία»"
-cover: ../../assets/placeholders/hall-1.jpg
+cover: ../../assets/images/ΕΘ_ΑΙΜ1- 1.png
 gallery:
-  - ../../assets/placeholders/hall-1.jpg
-  - ../../assets/placeholders/hall-2.jpg
-  - ../../assets/placeholders/hall-3.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ1- 2.JPG
+- ../../assets/images/ΕΘ_ΑΙΜ1- 4.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ1- 5.jpg
 ---
 
 Ξεκινήσαμε με μια διήμερη αιμοδοσία για τους πάσχοντες που υποστηρίζονται από το Τμήμα Μεσογειακής Αναιμίας του Νοσοκομείου Παίδων «Η Αγία Σοφία». Η ανταπόκριση ήταν συγκινητική: συνολικά συγκεντρώθηκαν 115 ασκοί αίματος.

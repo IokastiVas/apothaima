@@ -6,11 +6,12 @@ type: "Συνδιοργάνωση αιμοδοσίας"
 tag: aimodosia
 location: "Δημοτική Πινακοθήκη Πειραιά"
 partners: "Εθνικό Κέντρο Αιμοδοσίας (ΕΚΕΑ) και ΠΑ.Σ.ΠΑ.Μ.Α."
-cover: ../../assets/placeholders/drop-1.jpg
+cover: ../../assets/images/ΕΘ_ΑΙΜ7- 1.jpg
 gallery:
-  - ../../assets/placeholders/drop-1.jpg
-  - ../../assets/placeholders/drop-2.jpg
-  - ../../assets/placeholders/drop-3.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ7- 1.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ7- 4.JPG
+- ../../assets/images/ΕΘ_ΑΙΜ7- 5.JPG
+- ../../assets/images/ΕΘ_ΑΙΜ7- 7.JPG
 ---
 
 Η έβδομη αιμοδοσία μας πραγματοποιήθηκε στη Δημοτική Πινακοθήκη Πειραιά, σε συνεργασία με το ΕΚΕΑ και με τη στήριξη του ΠΑ.Σ.ΠΑ.Μ.Α., συνεργατών και εθελοντών. Μια ακόμη ευκαιρία να προσφέρουμε όλοι μαζί κάτι πολύτιμο σε ανθρώπους που χρειάζονται αίμα.

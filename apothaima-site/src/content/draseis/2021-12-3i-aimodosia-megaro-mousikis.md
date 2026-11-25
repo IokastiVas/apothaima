@@ -6,11 +6,14 @@ type: "Διοργάνωση αιμοδοσίας"
 tag: aimodosia
 location: "Μέγαρο Μουσικής Αθηνών"
 partners: "Νοσοκομείο Παίδων «Η Αγία Σοφία»"
-cover: ../../assets/placeholders/hall-1.jpg
+cover: ../../assets/images/ΕΘ_ΑΙΜ3- 1.JPG
 gallery:
-  - ../../assets/placeholders/hall-1.jpg
-  - ../../assets/placeholders/hall-2.jpg
-  - ../../assets/placeholders/hall-3.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ3- 2.JPG
+- ../../assets/images/ΕΘ_ΑΙΜ3- 3.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ3- 4.JPG
+- ../../assets/images/ΕΘ_ΑΙΜ3- 5.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ3- 6.JPG
+- ../../assets/images/ΕΘ_ΑΙΜ3- 7.JPG
 ---
 
 Με γιορτινή διάθεση, επιστρέψαμε στο Μέγαρο Μουσικής Αθηνών για την τρίτη μας αιμοδοσία, συνεχίζοντας την προσπάθεια να στηρίξουμε τους πάσχοντες από Μεσογειακή Αναιμία.

@@ -6,11 +6,9 @@ type: "Διοργάνωση αιμοδοσίας"
 tag: aimodosia
 location: "Ιερός Ναός Αγίου Βασιλείου, Άγιος Δημήτριος"
 partners: "Νοσοκομείο Παίδων «Η Αγία Σοφία», με υποστήριξη ΠΑ.Σ.ΠΑ.Μ.Α."
-cover: ../../assets/placeholders/drop-1.jpg
+cover: ../../assets/images/ΕΘ_ΑΙΜ2- 3.JPG
 gallery:
-  - ../../assets/placeholders/drop-1.jpg
-  - ../../assets/placeholders/drop-2.jpg
-  - ../../assets/placeholders/drop-3.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ2- 2.JPG
+- ../../assets/images/ΕΘ_ΑΙΜ2- 4.JPG
 ---
-
 Η δεύτερη αιμοδοσία μας πραγματοποιήθηκε στον Ιερό Ναό Αγίου Βασιλείου, στον Άγιο Δημήτριο, για την ενίσχυση του Τμήματος Μεσογειακής Αναιμίας του Νοσοκομείου Παίδων «Η Αγία Σοφία».

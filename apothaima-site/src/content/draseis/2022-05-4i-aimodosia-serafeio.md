@@ -6,11 +6,11 @@ type: "Συνδιοργάνωση αιμοδοσίας"
 tag: aimodosia
 location: "Σεράφειο Δήμου Αθηναίων"
 partners: "Νοσοκομείο Παίδων «Η Αγία Σοφία», με την υποστήριξη του ΠΑ.Σ.ΠΑ.Μ.Α."
-cover: ../../assets/placeholders/crowd-1.jpg
+cover: ../../assets/images/ΕΘ_ΑΙΜ4- 5.JPG
 gallery:
-  - ../../assets/placeholders/crowd-1.jpg
-  - ../../assets/placeholders/crowd-2.jpg
-  - ../../assets/placeholders/crowd-3.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ4- 3.JPG
+- ../../assets/images/ΕΘ_ΑΙΜ4- 4.jpg
+- ../../assets/images/ΕΘ_ΑΙΜ4- 5.jpg
 ---
 
 Την τέταρτη αιμοδοσία μας τη διοργανώσαμε μαζί με τον ΠΑ.Σ.ΠΑ.Μ.Α., με αφορμή την Παγκόσμια Ημέρα Θαλασσαιμίας. Συναντηθήκαμε στο Σεράφειο του Δήμου Αθηναίων με κοινό στόχο να ενισχύσουμε τα αποθέματα αίματος για τους ανθρώπους που το χρειάζονται.
