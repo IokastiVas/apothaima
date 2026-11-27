@@ -58,10 +58,15 @@ const boxes = [
 
   <section class="section">
     <div class="container split">
-      <div class="split__img"><Image src={storyImg} alt="Η πρώτη αιμοδοσία του ΑΠΟΘΑΙΜΑ στο Μέγαρο Μουσικής" width={800} /></div>
+      <div class="pulse-card">
+  <span class="pulse-card__tag">ΑΠΟΘΑΙΜΑ · από το {site.foundedYear}</span>
+ <h2 class="pulse-card__quote">Από μια ιδέα προσφοράς σε μια κοινότητα <em>κοινωνικής δράσης</em></h2>
+  <svg class="pulse-card__ecg" viewBox="0 0 400 80" aria-hidden="true" preserveAspectRatio="none">
+    <path pathLength="1" d="M0 40 H110 L128 40 L143 8 L163 72 L180 22 L194 40 H400" />
+  </svg>
+</div>
       <div class="stack" style="gap:20px">
         <span class="eyebrow">Η ιστορία μας</span>
-        <h2 class="h2">Από μια ιδέα προσφοράς σε μια κοινότητα κοινωνικής δράσης</h2>
         <p style="font-size:18px;color:var(--ink-2)">Το ΑΠΟΘΑΙΜΑ γεννήθηκε το 2021, μέσα στην πανδημία, από την ανάγκη για αίμα των ανθρώπων με Μεσογειακή Αναιμία. Η πρώτη διήμερη αιμοδοσία στο Μέγαρο Μουσικής ήταν η αρχή. Σήμερα, ως ΑΠΟΘΑΙΜΑ COMMUNITY ΑΜΚΕ, δημιουργούμε περισσότερους τρόπους να συμμετέχει ο καθένας.</p>
         <a class="link-arrow" href={url('/istoria/')}>Διάβασε όλη την ιστορία →</a>
       </div>

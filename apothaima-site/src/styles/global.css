@@ -327,3 +327,58 @@ body { background: var(--paper); }
   }
 }
 @media (prefers-reduced-motion: reduce) { .btn, .card { transition: none; } }
+/* ===== Pulse card ===== */
+.pulse-card {
+  background: var(--red);
+  color: #fff;
+  border-top-right-radius: 120px;
+  padding: clamp(32px, 5vw, 56px);
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+.pulse-card__tag { font-weight: 600; font-size: 13px; letter-spacing: .14em; color: #ffd9d4; }
+.pulse-card__quote { font-weight: 800; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -0.03em; max-width: 440px; }
+.pulse-card__ecg { width: 100%; height: 80px; }
+.pulse-card__ecg path {
+  fill: none;
+  stroke: var(--sun);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  animation: ecg 4s ease-in-out infinite;
+}
+@keyframes ecg {
+  0% { stroke-dashoffset: 1; }
+  60%, 85% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse-card__ecg path { animation: none; stroke-dashoffset: 0; }
+}
+/* ===== Pulse card: η φράση της ιστορίας ===== */
+.pulse-card__quote { font-size: clamp(26px, 3.2vw, 40px); line-height: 1.12; letter-spacing: -0.025em; max-width: none; }
+.pulse-card__quote em { font-style: normal; color: var(--sun); }
+/* ===== Μικρότερη σταγόνα hero ===== */
+.drops .big { width: clamp(240px, 36vw, 500px); }
+@media (max-width: 860px) {
+  .drops .big { width: 70vw; }
+}
+
+/* ===== Next event: κόκκινο ===== */
+.next { background: var(--red); color: #fff; }
+.next p { color: #ffe3df; }
+.next__date { background: var(--paper); color: var(--red); }
+.next__date .next__day, .next__date .next__month { color: var(--red); }
+.next .btn--primary { background: #fff; color: var(--red-dark); }
+.next .btn--primary:hover { background: var(--paper); color: var(--red-dark); }
+.next .btn--ghost { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .7); }
+.next .btn--ghost:hover { background: #fff; color: var(--red-dark); border-color: #fff; }
+.next :focus-visible { outline-color: #fff; }
+/* ===== Κουμπί στο header ===== */
+.nav .btn { border-radius: 999px; }
+.nav .btn--primary:hover { background: var(--red-dark); color: #fff; }
