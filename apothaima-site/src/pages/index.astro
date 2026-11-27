@@ -24,7 +24,7 @@ const boxes = [
 <Base>
   <section class="hero">
   <div class="drops" aria-hidden="true">
-    <span class="big" style="--x:50%;--y:50%"></span>
+    
     <span style="--s:130px;--x:5%;--y:10%;--c:var(--red)"></span>
     <span style="--s:80px;--x:86%;--y:8%;--c:var(--sun);--d:-2s"></span>
     <span style="--s:90px;--x:4%;--y:68%;--c:var(--sun);--d:-3s"></span>
@@ -51,7 +51,7 @@ const boxes = [
     <h2 class="sr-only">Τα νούμερά μας</h2>
     <div class="stats">
       {boxes.map((b) => (
-        <div class="stat"><span class="stat__num">{b.num}</span><span class="stat__label">{b.label}</span></div>
+        <div class="stat"><span class="stat__num" data-count={b.num}>{b.num}</span><span class="stat__label">{b.label}</span></div>
       ))}
     </div>
   </section>
@@ -73,7 +73,7 @@ const boxes = [
     </div>
   </section>
 
-  <section class="section section--beige">
+  <section class="section">
     <div class="container">
       <div class="section-head">
         <div class="stack" style="gap:10px">
@@ -96,4 +96,33 @@ const boxes = [
       </div>
     </div>
   </section>
+
+  <script>
+    const DURATION = 1400; // 1,4 δευτερόλεπτα (βάλε έως 3000)
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const els = document.querySelectorAll<HTMLElement>('.stat__num[data-count]');
+
+    els.forEach((el) => {
+      const raw = el.dataset.count ?? '';
+      const target = parseInt(raw, 10);
+      if (isNaN(target) || reduce) return;          // αν δεν είναι αριθμός, το αφήνει ως έχει
+      const suffix = raw.replace(/^\d+/, '');        // κρατάει τυχόν "+" κλπ
+      el.textContent = '0' + suffix;
+
+      const io = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        const start = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min((now - start) / DURATION, 1);
+          const eased = 1 - Math.pow(1 - p, 3);      // ξεκινάει γρήγορα, φρενάρει στο τέλος
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, { threshold: 0.5 });
+
+      io.observe(el);
+    });
+  </script>
 </Base>

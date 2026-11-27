@@ -382,3 +382,40 @@ body { background: var(--paper); }
 /* ===== Κουμπί στο header ===== */
 .nav .btn { border-radius: 999px; }
 .nav .btn--primary:hover { background: var(--red-dark); color: #fff; }
+.stat__num { font-variant-numeric: tabular-nums; }
+.hero { --big: 620px; }
+.hero__inner {
+  padding-top: calc(var(--big) * .707 - 190px);
+  padding-bottom: calc(var(--big) * .5 - 70px);
+}
+.hero .stack { position: relative; }
+.hero .stack::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 40px);
+  z-index: -1;
+  width: var(--big);
+  aspect-ratio: 1;
+  border-radius: var(--drop);
+  rotate: -45deg;
+  translate: -50% -50%;
+  background: linear-gradient(150deg, #ffc9c2 0, #f8a9a0 55%, #ef8d83 100%);
+  box-shadow: 0 0 40px rgba(179, 38, 30, .15);
+  animation: bob-big 7s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero .stack::before { animation: none; }
+}
+
+.hero h1 { font-size: 62px; }
+.hero .eyebrow { font-size: 12px; padding: 5px 14px; }
+.hero .lead { font-size: 17px; max-width: 480px; }
+.hero .btn { font-size: 16px; min-height: 48px; padding: 12px 26px; }
+
+/* Κινητό */
+@media (max-width: 680px) {
+  .hero { --big: 86vw; }
+  .hero__inner { padding-top: calc(var(--big) * .707 - 60px); padding-bottom: 64px; }
+  .hero h1 { font-size: 36px; }
+}
