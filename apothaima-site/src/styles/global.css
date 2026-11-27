@@ -433,3 +433,11 @@ body { background: var(--paper); }
   .link-arrow { transition: color .2s ease; }
   .link-arrow:hover { transform: none; }
 }
+
+/* ===== Σταγόνες στα πλάγια όλης της σελίδας ===== */
+.page-body { position: relative; overflow-x: clip; }
+.page-body > section { position: relative; z-index: 1; }
+.side-drops { z-index: 0; }
+@media (max-width: 1400px) {
+  .side-drops { display: none; }
+}
