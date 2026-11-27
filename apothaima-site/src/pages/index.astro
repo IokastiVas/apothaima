@@ -23,21 +23,25 @@ const boxes = [
 ---
 <Base>
   <section class="hero">
-    <div class="container hero__inner">
-      <div class="stack" style="gap:24px">
-        <span class="eyebrow">Εθελοντική αιμοδοσία · Αλληλεγγύη · Κοινότητα</span>
-        <h1>Κάνε καλό,<br />νιώσε καλύτερα!</h1>
-        <p class="lead">Από το 2021 οργανώνουμε εθελοντικές αιμοδοσίες και δράσεις αλληλεγγύης. Από μια πράξη, γεννήθηκε μια κοινότητα.</p>
-        <div class="btn-row">
-          <a class="btn btn--primary" href={url('/draseis/')}>Δες τις δράσεις μας</a>
-          <a class="btn btn--ghost" href={url('/istoria/')}>Η ιστορία μας</a>
-        </div>
-      </div>
-      <div class="hero__img">
-        <Image src={heroImg} alt="Εθελοντές και αιμοδότες σε δράση του ΑΠΟΘΑΙΜΑ" width={900} loading="eager" fetchpriority="high" />
+  <div class="drops" aria-hidden="true">
+    <span class="big" style="--x:50%;--y:50%"></span>
+    <span style="--s:130px;--x:5%;--y:10%;--c:var(--red)"></span>
+    <span style="--s:80px;--x:86%;--y:8%;--c:var(--sun);--d:-2s"></span>
+    <span style="--s:90px;--x:4%;--y:68%;--c:var(--sun);--d:-3s"></span>
+    <span style="--s:60px;--x:80%;--y:80%;--c:var(--red);--d:-4s"></span>
+  </div>
+  <div class="container hero__inner">
+    <div class="stack" style="gap:28px">
+      <span class="eyebrow">Εθελοντική αιμοδοσία · Αλληλεγγύη · Κοινότητα</span>
+      <h1>Κάνε καλό,<br />νιώσε <span class="accent">καλύτερα!</span></h1>
+      <p class="lead">Από το 2021 οργανώνουμε εθελοντικές αιμοδοσίες και δράσεις αλληλεγγύης. Από μια πράξη, γεννήθηκε μια κοινότητα.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href={url('/draseis/')}>Δες τις δράσεις μας</a>
+        <a class="btn btn--ghost" href={url('/istoria/')}>Η ιστορία μας</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <section class="container" style="padding-top:72px">
     <NextEvent next={next} />

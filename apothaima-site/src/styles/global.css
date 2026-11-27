@@ -183,3 +183,147 @@ a:hover { color: var(--red-dark); }
 .footer .logo, .footer .logo:hover { color: #fff; }
 .footer .logo__sub { color: var(--on-dark); }
 @media (max-width: 760px) { .footer__inner { grid-template-columns: 1fr; } }
+/* ===== Redesign (τελικό μπλοκ) ===== */
+:root {
+  --paper: #faf5ee;
+  --paper-2: #f1e8dd;
+  --bg: var(--paper);
+  --beige: var(--paper-2);
+  --sun: #ffcf4a;
+  --blush: #fbd5d0;
+  --drop: 50% 0 50% 50%;
+}
+body { background: var(--paper); }
+
+/* Header */
+.header { background: var(--paper); border-bottom: 2px solid var(--ink); }
+.nav a { border-radius: 0; }
+.nav a:hover { background: transparent; color: var(--red); }
+
+/* Hero */
+.hero { background: var(--paper); color: var(--ink); position: relative; overflow: hidden; isolation: isolate; }
+.hero__img { display: none; }
+.hero__inner {
+  display: block;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(64px, 9vw, 120px);
+}
+.hero .stack { align-items: center; max-width: 900px; margin: 0 auto; }
+.hero h1 { font-size: clamp(36px, 6.2vw, 88px); line-height: 1; letter-spacing: -0.035em; color: var(--ink); }
+.hero h1 .accent { color: var(--red); }
+.hero .eyebrow {
+  color: var(--ink); background: #fff; border: 1.5px solid var(--ink);
+  padding: 5px 14px; border-radius: 999px; font-size: 12px; letter-spacing: .1em;
+}
+.hero .lead { font-size: 18px; max-width: 540px; color: var(--ink-2); margin-inline: auto; }
+.hero .btn-row { justify-content: center; }
+.hero .btn--primary { background: var(--red); color: #fff; }
+.hero .btn--primary:hover { background: var(--red-dark); color: #fff; }
+.hero .btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.hero .btn--ghost:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.hero :focus-visible { outline-color: var(--red); }
+
+/* Σταγόνες */
+.drops { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.drops span {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--s);
+  aspect-ratio: 1;
+  background: var(--c);
+  border-radius: var(--drop);
+  rotate: -45deg;
+  animation: bob 6s ease-in-out var(--d, 0s) infinite;
+}
+.drops .big {
+  width: clamp(320px, 50vw, 700px);
+  background: linear-gradient(150deg, #ffc9c2 0, #f8a9a0 55%, #ef8d83 100%);
+  box-shadow: 0 0 100px rgba(179, 38, 30, .28);
+  translate: -50% -50%;
+  animation: bob-big 7s ease-in-out infinite;
+}
+@keyframes bob { 50% { translate: 0 -20px; } }
+@keyframes bob-big {
+  0%, 100% { translate: -50% -50%; }
+  50% { translate: -50% calc(-50% - 20px); }
+}
+@media (max-width: 860px) {
+  .drops span { width: calc(var(--s) * .6); }
+  .drops .big { width: 92vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drops span { animation: none; }
+}
+
+/* Λωρίδα με κίνηση */
+.marquee { background: var(--red); color: #fff; overflow: hidden; border-bottom: 2px solid var(--ink); }
+.marquee__track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  padding: 18px 0;
+  font-weight: 800;
+  font-size: clamp(20px, 3vw, 32px);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  animation: marquee 28s linear infinite;
+}
+.marquee__track span::after { content: '✦'; margin-left: 48px; color: var(--sun); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
+
+/* Κουμπιά */
+.btn { transition: background .2s, color .2s, transform .2s; }
+.btn:hover { transform: translateY(-2px); box-shadow: none; }
+
+/* Next event */
+.next { border-radius: 0; background: var(--ink); }
+.next__date { border-radius: var(--drop); }
+
+/* Stats */
+.stats { gap: 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+.stat { background: none; border-radius: 0; padding: 36px 24px 36px 0; border-right: 1px solid var(--ink); }
+.stat + .stat { padding-left: 28px; }
+.stat:last-child { border-right: 0; }
+.stat__num { font-size: clamp(64px, 9vw, 112px); letter-spacing: -0.05em; line-height: .9; }
+.stat__label { font-weight: 600; margin-top: 12px; }
+@media (max-width: 700px) {
+  .stat { border-right: 0; border-bottom: 1px solid var(--ink); padding-left: 0 !important; }
+  .stat:last-child { border-bottom: 0; }
+}
+
+/* Εικόνες */
+.split__img, .story-img { border-radius: 0; border-top-right-radius: 120px; }
+.h2 { letter-spacing: -0.03em; }
+
+/* Κάρτες */
+.section--beige { background: var(--paper-2); }
+.card { background: transparent; border: 0; border-top: 2px solid var(--ink); border-radius: 0; transition: transform .3s cubic-bezier(.2, .8, .2, 1); }
+.card:hover { transform: translateY(-4px); box-shadow: none; }
+.card__img { border-radius: 0; border-top-right-radius: 64px; margin-top: 20px; }
+.card__img img { transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+.card:hover .card__img img { transform: scale(1.05); }
+.card__body { padding: 20px 0 8px; }
+.card__title { font-size: 22px; transition: color .2s; }
+.card:hover .card__title { color: var(--red); }
+.tag { background: transparent; border: 1px solid var(--ink); }
+
+/* Partners + Footer */
+.partner { border: 0; border-top: 1px solid var(--ink); border-radius: 0; }
+.footer { background: var(--ink); }
+
+/* Scroll reveal (Chrome/Edge) */
+@keyframes rise { from { opacity: 0; translate: 0 28px; } to { opacity: 1; translate: 0 0; } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .stat, .card, .split > *, .partner {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) { .btn, .card { transition: none; } }
