@@ -419,3 +419,17 @@ body { background: var(--paper); }
   .hero__inner { padding-top: calc(var(--big) * .707 - 60px); padding-bottom: 64px; }
   .hero h1 { font-size: 36px; }
 }
+
+.link-arrow {
+  display: inline-block;
+  transition: transform .2s ease, color .2s ease;
+  transform-origin: left center;
+}
+.link-arrow:hover {
+  transform: scale(1.08);
+  color: var(--red-dark);
+}
+@media (prefers-reduced-motion: reduce) {
+  .link-arrow { transition: color .2s ease; }
+  .link-arrow:hover { transform: none; }
+}
